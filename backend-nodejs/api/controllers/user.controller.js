@@ -528,7 +528,7 @@ module.exports.deleteEmployee = function(req, res, next) {
     
     if (deletedEmployee) {
 
-      Employee.remove({email: req.params.email});
+      Employee.deleteOne({email: req.params.email});
       return res.status(422).json({
         err: null,
         msg:'The employee was successfully deleted.',
