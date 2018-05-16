@@ -1,0 +1,36 @@
+{
+  "name": "why-not",
+  "version": "1.0.2",
+  "private": true,
+  "scripts": {
+    "start": "node ./bin/www",
+    "test": "mocha"
+  },
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.18.2",
+    "browser-window": "^0.4.0",
+    "compression": "^1.7.2",
+    "cors": "^2.8.4",
+    "debug": "^3.1.0",
+    "express": "^4.16.3",
+    "helmet": "^3.12.0",
+    "jsonwebtoken": "^8.2.1",
+    "moment": "^2.22.0",
+    "mongoose": "^5.0.13",
+    "morgan": "^1.9.0",
+    "multer": "^1.3.0",
+    "nodemailer": "^4.6.4",
+    "socket.io": "^2.1.0",
+    "streamsearch": "^0.1.2",
+    "websocket": "^1.0.25",
+    "ws": "^5.1.1"
+  },
+  "devDependencies": {
+    "chai": "^3.2.0",
+    "chai-http": "^1.0.0",
+    "mockgoose": "^7.3.5",
+    "morgan": "^1.9.0",
+    "multer": "^1.3.0"
+  }
+}
