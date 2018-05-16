@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes, Router } from '@angular/router';
 import { ExpertComponent } from './expert/expert.component';
 import { HomeComponent } from './home/home.component';
-import { SessionComponent } from './session/session.component';
+//import { SessionComponent } from './session/session.component';
 import { SlotRequestComponent } from './slotRequest/slotRequest.component';
 import { LoginComponent } from './auth/login/login.component'
 import { AdminComponent } from './AdminPage/Admin.component'
@@ -21,7 +21,7 @@ import { EmployeesTableComponent } from './employees/employees-table/employees-t
 
 
 const routes: Routes = [
-  { path: 'session', component: SessionComponent },
+  //{ path: 'session', component: SessionComponent },
   { path: 'login' , component:LoginComponent},
   { path: 'signup' , component: SignupComponent},
   { path: 'dashboard', component:DashboardComponent},

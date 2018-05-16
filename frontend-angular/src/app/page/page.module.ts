@@ -24,7 +24,8 @@ import { AngularFontAwesomeModule } from 'angular-font-awesome';
 /* Our Components
 ---------------------------------------------------*/
 import { NavbarComponent } from './shared/navbar/navbar.component';
-import { SessionComponent } from './session/session.component';
+
+//import { SessionComponent } from './session/session.component';
 import { AdminComponent } from './AdminPage/Admin.component';
 
 import { viewScheduleComponent } from './viewSchedule/viewSchedule.component';
@@ -42,7 +43,7 @@ import { ProfileComponent } from './profile/profile.component';
 import { SignupComponent } from './auth/signup/signup.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { VideoViewComponent } from './videoView/videoView.component';
-import { SessionVideoComponent } from './sessionVideoVoice/session.component';
+//import { SessionVideoComponent } from './sessionVideoVoice/session.component';
 import { RtcMediaCaptureModule } from '../@core/rtc-media-capture/rtc-media-capture.module'
 import { DatePickerComponent } from './date-picker/date-picker.component';
 import { RatingComponent } from './rating/rating.component';
@@ -79,7 +80,7 @@ import { AdminPageUserComponent } from './AdminPageUser/AdminPageUser.component'
     NgbdModalComponent,
     NgbdModalContent,
     TemplateComponent,
-    SessionComponent,
+    //SessionComponent,
     LoginComponent,
     HomeComponent,
     EmployeesComponent,
@@ -88,7 +89,7 @@ import { AdminPageUserComponent } from './AdminPageUser/AdminPageUser.component'
     SignupComponent,
     DashboardComponent,
     VideoViewComponent,
-    SessionVideoComponent,
+   // SessionVideoComponent,
     SlotRequestComponent, 
     RatingComponent,
     DatePickerComponent,

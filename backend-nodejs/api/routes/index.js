@@ -3,7 +3,7 @@
   jwt = require('jsonwebtoken'),
   authCtrl = require('../controllers/auth.controller'),
   userCtrl = require('../controllers/user.controller'),
-  sessionCtrl = require('../controllers/session.controller'),
+  //sessionCtrl = require('../controllers/session.controller'),
   expert = require('../controllers/expert.controller'),
   AdminController = require('../controllers/Admin.Controller');
   
@@ -74,14 +74,14 @@ router.post('/expert/createSchedule',isAuthenticated,expert.createSchedule);
 router.get('/expert/viewSchedule',expert.viewSchedule);
 router.get('/expert/viewScheduledSlots',isAuthenticated,expert.viewScheduledSlots);
 router.get('/expert/viewRequestedSlots',isAuthenticated,expert.viewRequestedSlots);
-router.post('/expert/acceptRequest',isAuthenticated,expert.acceptRequest);
-router.post('/expert/rejectRequest',isAuthenticated,expert.rejectRequest);
-router.post('/expert/rejectallRequest',isAuthenticated,expert.rejectAllRequests);
+//router.post('/expert/acceptRequest',isAuthenticated,expert.acceptRequest);
+//router.post('/expert/rejectRequest',isAuthenticated,expert.rejectRequest);
+//router.post('/expert/rejectallRequest',isAuthenticated,expert.rejectAllRequests);
 //-------------------------------------------------------------------
-router.post('/session/create' , isNotAuthenticated, sessionCtrl.createSession);
+/*router.post('/session/create' , isNotAuthenticated, sessionCtrl.createSession);
 router.post('/session/addCandidate' , isNotAuthenticated, sessionCtrl.addCandidate);
 router.post('/session/updateCandidate' , isNotAuthenticated, sessionCtrl.updateCandidate);
-router.post('/session/getCandidatesRTCDes/:sessionId' , isNotAuthenticated, sessionCtrl.getCandidatesRTCDes);
+router.post('/session/getCandidatesRTCDes/:sessionId' , isNotAuthenticated, sessionCtrl.getCandidatesRTCDes);*/
 
 router.post('/photo', isAuthenticated , userCtrl.uploadimage);
 router.get('/getphoto', isAuthenticated , userCtrl.getimage);
@@ -102,9 +102,9 @@ router.post('/user/reserveSlot', isAuthenticated, userCtrl.reserveSlot);
 router.post('/user/chooseSlot/:expertEmail', isAuthenticated, userCtrl.chooseSlot);
 router.get('/user/viewSuggestedExperts/:tagName', isAuthenticated, userCtrl.viewSuggestedExperts);
 router.get('/user/userViewScheduledSlots',isAuthenticated, userCtrl.userViewScheduledSlots);
-router.get('/user/viewEmployees',isAuthenticated, userCtrl.viewEmployees);
-router.post('/user/addEmployee',isAuthenticated, userCtrl.addEmployee);
-router.post('/user/updateEmployee',isAuthenticated, userCtrl.updateEmployee);
-router.delete('/user/deleteEmployee/:email',isAuthenticated, userCtrl.deleteEmployee);
+router.get('/user/viewEmployees', userCtrl.viewEmployees);
+router.post('/user/addEmployee', userCtrl.addEmployee);
+router.post('/user/updateEmployee', userCtrl.updateEmployee);
+router.delete('/user/deleteEmployee/:email', userCtrl.deleteEmployee);
 
 module.exports = router;

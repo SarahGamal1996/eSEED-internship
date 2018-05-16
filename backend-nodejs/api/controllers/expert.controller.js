@@ -8,7 +8,7 @@ var mongoose = require('mongoose'),
   Tag = mongoose.model('Tag'),
   Slot = mongoose.model('ReservedSlot'),
   Schedule = mongoose.model('Schedule'),
-  Session = mongoose.model('Session'),
+  //Session = mongoose.model('Session'),
   Validations = require('../utils/validations'),
   moment = require('moment');
   var nodemailer = require('nodemailer');
@@ -338,96 +338,6 @@ module.exports.createSchedule = function(req, res, next) {
 });
 };
 
-
-
-
-module.exports.acceptRequest =  function(req, res, next) {
-
-
-  Schedule.findOne({ expertEmail : req.decodedToken.user.email , 
-    "slots.Date":req.body.Date} ,
-    {"slots.$": 1} ).exec(function(err, schedule) {
-  
-      if (err) 
-          return next(err);
-      if(schedule.slots[0].usersAccepted.length >0){
-        return res.status(409).json({
-          err: null ,
-          msg: 'This slot is already assigned to another user.' ,
-          data: null
-      });
-      }
-
-
-  User.findOne({email:req.body.userName}).exec(function(err, user) {
-  
-  if (err) 
-  return next(err);
-  if(!user){
-    return res.status(409).json({
-      err: null ,
-      msg: 'Failed to find a user with this email.',
-      data: null
-  });
-  }
-  req.body.createdById=req.decodedToken.user._id;
-  req.body.candidates =  {id: user._id} ; 
- Session.create(req.body, function(err,Session) {
-      if(err)
-      return next(err);
-
-      if(!Session){
-        return res.status(409).json({
-          err: null ,
-          msg: 'Failed to create a session.',
-          data: null
-      });
-
-      }
-    Schedule.findOneAndUpdate(  
-    {$and:[{ expertEmail : req.decodedToken.user.email}  , 
-    { 'slots.Date' : req.body.Date  }]},
-    {$push: {'slots.$.usersAccepted': req.body.userName},
-    $set :{'slots.$.sessionId':Session._id},
-     $pull: {'slots.$.usersRequested':req.body.userName} }  ,{new:true}
-  ).exec(function(err, schedule) {
-    if (err) 
-        return next(err);
-    if(schedule) {
-          //send confirmation email
-          let confirmationUrl = 'http://localhost:4200/#/page' + `/session/${Session._id}`;
-          var expert = req.decodedToken.user.email;
-           //contents of email
-           var mailOptions = {
-             from: 'riseuptest@hotmail.com',
-             to: user.email, expert,
-             subject: 'Session Confirmation',
-             html: 'This is a confirmation email to confirm you session reservation.</p>'+'Expert : '+ expert+ 
-             '</p> User : ' + user.email + '</p> Session url : ' + confirmationUrl + "</p> Timing : " + req.body.Date , 
-            };
-            /*transporter.sendMail(mailOptions, function (err) {
-              if (err) {
-                  }
-          });*/
-             module.exports.rejectAllRequests(req,res,next);
-            
-           
-    
-          
-    } else {
-        return res.status(409).json({
-            err: null ,
-            msg: 'Failed to accept the slot reservation.',
-            data: null
-        });
-         }
-});
-   
-    });
-  });
-});
-
-};
 
 
 

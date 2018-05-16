@@ -4,7 +4,7 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app.routing'
 import { AppComponent } from './app.component';
 import { APIService } from './@core/service/api.service';
-import { SessionService } from './@core/service/session.service';
+//import { SessionService } from './@core/service/session.service';
 import { FormsModule } from '@angular/forms';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { AuthInterceptor } from './@core/service/auth.intercepter';
@@ -36,7 +36,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
       provide: HTTP_INTERCEPTORS,
       useClass: AuthInterceptor,
       multi: true
-    } , APIService , SessionService
+    } , APIService 
   ],
   bootstrap: [AppComponent]
 })
