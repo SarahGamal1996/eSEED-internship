@@ -520,11 +520,32 @@ module.exports.updateEmployee = function(req, res, next) {
 
 module.exports.deleteEmployee = function(req, res, next) {
 
-  Employee.findAndRemove({email: req.params.email}).exec(function(
-    err,
-    deletedEmployee
-  ) {
+  Employee.findOne({ email: req.params.email}).exec(function(err, deletedEmployee) {
+  
     if (err) {
+      return next(err);
+    }
+    
+    if (deletedEmployee) {
+
+      Employee.remove({email: req.params.email});
+      return res.status(422).json({
+        err: null,
+        msg:'The employee was successfully deleted.',
+        data: deletedEmployee
+      });
+    }
+   return res.status(404).json({
+      err: null,
+      msg: 'Employee not found.',
+      data: null
+    });
+  });
+
+
+  //Employee.findOne()
+  //Employee.remove({email: req.params.email})
+   /* if (err) {
       return next(err);
     }
     if (!deletedEmployee) {
@@ -537,5 +558,5 @@ module.exports.deleteEmployee = function(req, res, next) {
       msg: 'Employee was deleted successfully.',
       data: deletedEmployee
     });
-  });
+  });*/
 };

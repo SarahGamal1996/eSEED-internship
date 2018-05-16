@@ -102,9 +102,9 @@ router.post('/user/reserveSlot', isAuthenticated, userCtrl.reserveSlot);
 router.post('/user/chooseSlot/:expertEmail', isAuthenticated, userCtrl.chooseSlot);
 router.get('/user/viewSuggestedExperts/:tagName', isAuthenticated, userCtrl.viewSuggestedExperts);
 router.get('/user/userViewScheduledSlots',isAuthenticated, userCtrl.userViewScheduledSlots);
-router.get('/user/viewEmployees', userCtrl.viewEmployees);
-router.post('/user/addEmployee', userCtrl.addEmployee);
-router.post('/user/updateEmployee', userCtrl.updateEmployee);
-router.delete('/user/deleteEmployee/:email',userCtrl.deleteEmployee);
+router.get('/user/viewEmployees',isAuthenticated, userCtrl.viewEmployees);
+router.post('/user/addEmployee',isAuthenticated, userCtrl.addEmployee);
+router.post('/user/updateEmployee',isAuthenticated, userCtrl.updateEmployee);
+router.delete('/user/deleteEmployee/:email',isAuthenticated, userCtrl.deleteEmployee);
 
 module.exports = router;
